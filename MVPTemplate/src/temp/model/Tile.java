@@ -1,27 +1,37 @@
 package temp.model;
 
-import javafx.geometry.Pos;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class Tile {
-
     private StackPane pane;
+    private List<Piece> pieces;
 
     public Tile() {
         pane = new StackPane();
-        pane.setMinSize(50,50);
+        pane.setMinSize(70, 70);
+        pieces = new ArrayList<>();
+    }
 
-        Piece bottomPiece = new Piece(30,30,30);
-        Piece topPiece = new Piece(20,20,20);
+    public void addPiece(Piece piece) {
+        pieces.add(piece);
+        updatePiecePositions();
+        pane.getChildren().add(piece);
+    }
 
-        pane.getChildren().addAll(bottomPiece, topPiece);
+    private void updatePiecePositions() {
+        for (int i = 0; i < pieces.size(); i++) {
+            Piece piece = pieces.get(i);
+            piece.setTranslateZ(-piece.getPieceDepth() * (pieces.size() - 1 - i));
+        }
     }
 
     public StackPane getPane() {
         return pane;
     }
 
-
+    public List<Piece> getPieces() {
+        return pieces;
+    }
 }
