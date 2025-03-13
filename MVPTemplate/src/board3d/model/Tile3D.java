@@ -1,20 +1,20 @@
-package temp.model;
+package board3d.model;
 
 import javafx.scene.layout.StackPane;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tile {
+public class Tile3D {
     private StackPane pane;
-    private List<Piece> pieces;
+    private List<Piece3D> pieces;
 
-    public Tile() {
+    public Tile3D() {
         pane = new StackPane();
         pane.setMinSize(70, 70);
         pieces = new ArrayList<>();
     }
 
-    public void addPiece(Piece piece) {
+    public void addPiece(Piece3D piece) {
         pieces.add(piece);
         updatePiecePositions();
         pane.getChildren().add(piece);
@@ -22,7 +22,7 @@ public class Tile {
 
     private void updatePiecePositions() {
         for (int i = 0; i < pieces.size(); i++) {
-            Piece piece = pieces.get(i);
+            Piece3D piece = pieces.get(i);
             piece.setTranslateZ(-piece.getPieceDepth() * (pieces.size() - 1 - i));
         }
     }
@@ -31,7 +31,7 @@ public class Tile {
         return pane;
     }
 
-    public List<Piece> getPieces() {
+    public List<Piece3D> getPieces() {
         return pieces;
     }
 }

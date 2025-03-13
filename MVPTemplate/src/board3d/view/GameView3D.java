@@ -1,22 +1,21 @@
-package temp.view;
+package board3d.view;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import temp.model.Board;
+import board3d.model.Board3D;
 
-public class GameView extends StackPane {
+public class GameView3D extends StackPane {
 
-    private Board board;
+    private Board3D board;
     private VBox boardContainer;
 
-    public GameView() {
+    public GameView3D() {
         initialiseNodes();
         layoutNodes();
     }
 
     private void initialiseNodes() {
-        board = new Board();
+        board = new Board3D();
         boardContainer = new VBox();
         // create and configure controls
     }

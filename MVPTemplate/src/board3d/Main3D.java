@@ -1,4 +1,4 @@
-package temp;
+package board3d;
 
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -7,12 +7,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Slider;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
-import temp.model.Board;
+import board3d.model.Board3D;
 
-public class Main extends Application {
+public class Main3D extends Application {
     @Override
     public void start(Stage primaryStage) {
-        Board board = new Board();
+        Board3D board = new Board3D();
 
         Group group = new Group(board);
 

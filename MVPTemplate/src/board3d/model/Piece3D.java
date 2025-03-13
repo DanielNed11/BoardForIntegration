@@ -1,10 +1,10 @@
-package temp.model;
+package board3d.model;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 
-public class Piece extends Box {
+public class Piece3D extends Box {
     public enum PieceSize { SMALL, MEDIUM, LARGE, BLOCKADE }
     public enum PieceColor { YELLOW, RED, GREEN, BLUE, BLACK }
 
@@ -14,7 +14,7 @@ public class Piece extends Box {
     private PieceSize size;
     private PieceColor color;
 
-    public Piece(double width, double height, double depth, PieceSize size, PieceColor color) {
+    public Piece3D(double width, double height, double depth, PieceSize size, PieceColor color) {
         super(width, height, depth);
         this.depth = depth;
         this.size = size;
