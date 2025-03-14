@@ -12,11 +12,13 @@ public class Main extends Application {
         GameView view = new GameView();
         new GamePresenter(view, primaryStage);
 
-        Scene scene = new Scene(view, 300, 300);
+        Scene scene = new Scene(view, 600, 600);
 
         primaryStage.setTitle("Welcome");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
+
+    public static void main(String[] args) {launch(args);}
 }

@@ -1,77 +1,109 @@
 package board3d.model;
+//
+//import javafx.scene.paint.Color;
+//import javafx.scene.paint.PhongMaterial;
+//import javafx.scene.shape.Box;
+//
+//public class Piece3D extends Box {
+//    public enum PieceSize { SMALL, MEDIUM, LARGE, BLOCKADE }
+//    public enum PieceColor { YELLOW, RED, GREEN, BLUE, BLACK }
+//
+//    private PhongMaterial material;
+//    private boolean isClicked = false;
+//    private double depth;
+//    private PieceSize size;
+//    private PieceColor color;
+//
+//    public Piece3D(double width, double height, double depth, PieceSize size, PieceColor color) {
+//        super(width, height, depth);
+//        this.depth = depth;
+//        this.size = size;
+//        this.color = color;
+//
+//        material = new PhongMaterial();
+//        material.setDiffuseColor(mapColor(color));
+//        material.setSpecularColor(Color.WHITE);
+//        this.setMaterial(material);
+//
+//        this.setOnMouseClicked(event -> {
+//            if (!isClicked) {
+//                this.setColor(Color.RED);
+//                isClicked = true;
+//            } else {
+//                this.setColor(mapColor(color));
+//                isClicked = false;
+//            }
+//        });
+//    }
+//
+//    public void setColor(Color color) {
+//        if (material != null) {
+//            material.setDiffuseColor(color);
+//        }
+//    }
+//
+//    public void highlight(boolean isHighlighted) {
+//        if (material != null) {
+//            if (isHighlighted) {
+//                material.setDiffuseColor(Color.RED);
+//            } else {
+//                material.setDiffuseColor(mapColor(color));
+//            }
+//        }
+//    }
+//
+//    public double getPieceDepth() {
+//        return depth;
+//    }
+//
+//    public PieceSize getSize() {
+//        return size;
+//    }
+//
+//    public PieceColor getColor() {
+//        return color;
+//    }
+//
+//    private Color mapColor(PieceColor color) {
+//        switch (color) {
+//            case YELLOW: return Color.YELLOW;
+//            case RED: return Color.RED;
+//            case GREEN: return Color.GREEN;
+//            case BLUE: return Color.BLUE;
+//            case BLACK: return Color.BLACK;
+//            default: return Color.GRAY;
+//        }
+//    }
+//}
 
+import board.model.PieceColor;
+import board.model.PieceSize;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 
-public class Piece3D extends Box {
-    public enum PieceSize { SMALL, MEDIUM, LARGE, BLOCKADE }
-    public enum PieceColor { YELLOW, RED, GREEN, BLUE, BLACK }
+public class Piece3D extends StackPane {
 
-    private PhongMaterial material;
-    private boolean isClicked = false;
-    private double depth;
-    private PieceSize size;
-    private PieceColor color;
+    private Box box;
 
-    public Piece3D(double width, double height, double depth, PieceSize size, PieceColor color) {
-        super(width, height, depth);
-        this.depth = depth;
-        this.size = size;
-        this.color = color;
+    public Piece3D(PieceSize size, PieceColor color) {
+        int sizeValue = size.getSize();
 
-        material = new PhongMaterial();
-        material.setDiffuseColor(mapColor(color));
+        box = new Box(sizeValue, sizeValue, 10);
+
+        PhongMaterial material = new PhongMaterial();
+        material.setDiffuseColor(color.getColor());
         material.setSpecularColor(Color.WHITE);
-        this.setMaterial(material);
+        box.setMaterial(material);
 
-        this.setOnMouseClicked(event -> {
-            if (!isClicked) {
-                this.setColor(Color.RED);
-                isClicked = true;
-            } else {
-                this.setColor(mapColor(color));
-                isClicked = false;
-            }
-        });
+        this.getChildren().addAll(box);
+
     }
 
-    public void setColor(Color color) {
-        if (material != null) {
-            material.setDiffuseColor(color);
-        }
-    }
-
-    public void highlight(boolean isHighlighted) {
-        if (material != null) {
-            if (isHighlighted) {
-                material.setDiffuseColor(Color.RED);
-            } else {
-                material.setDiffuseColor(mapColor(color));
-            }
-        }
-    }
-
-    public double getPieceDepth() {
-        return depth;
-    }
-
-    public PieceSize getSize() {
-        return size;
-    }
-
-    public PieceColor getColor() {
-        return color;
-    }
-
-    private Color mapColor(PieceColor color) {
-        switch (color) {
-            case YELLOW: return Color.YELLOW;
-            case RED: return Color.RED;
-            case GREEN: return Color.GREEN;
-            case BLUE: return Color.BLUE;
-            case BLACK: return Color.BLACK;
-            default: return Color.GRAY;
-        }
+    public Box getBox() {
+        return box;
     }
 }
